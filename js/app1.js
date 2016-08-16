@@ -68,11 +68,6 @@ app1.controller('tabs', function ($scope) {
             size : rowLayout[x]
         })
      }
-       // $tab.rows[$tab.rows.length].cols[0].size = 12;
-        // for (var x = 0; x < rowLayout.length; x++) {
-        //     $tab.rows[$tab.rows.length-1].cols[x]=rowLayout[x];            
-        // }
- 
 
     }
 
