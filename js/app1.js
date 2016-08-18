@@ -1,42 +1,28 @@
 var app1 = angular.module('app1', ['ui.bootstrap']);
 
-app1.run(function($rootScope) {
-   $rootScope.serverName = "Test Server";
-   $rootScope.userName = "Test User";
+app1.service('settings', function() {
+    this.serverName = "Test Server";
+    this.userName = "UserName";
+    this.editMode = false;
+});
+
+app1.controller('navbar', function ($scope, settings) {
+  $scope.settings = settings;
+
+$scope.setEditMode = function(enabled) {
+    $scope.settings.editMode = enabled;
+    console.log(enabled);
+}
+
+
+
 });
 
 
-app1.controller('ctrl1', function ($scope) {
 
-});
+app1.controller('tabs', function ($scope, settings) {
 
-app1.controller('navbar', function ($scope) {
-  
-
-});
-
-app1.controller('tabs', function ($scope) {
- 
-     // It should load from JSON
- 
-// this is the format of the JSON 
-            // rows : [
-            //     {
-            //         cols : [
-            //             {size : 6},
-            //             {size : 6}
-            //         ],
-            //     },
-            //     {
-            //         cols : [
-            //             {size : 2},
-            //             {size : 4},
-            //             {size : 6}
-            //         ]
-            //     },
-
-            // ]
- 
+    $scope.settings = settings; 
     $scope.tabs = [];
     $scope.defaultLayout = "2 6 4";
         
@@ -74,5 +60,24 @@ app1.controller('tabs', function ($scope) {
     $scope.renderTab = function($tab) {
 
     };
+         // It should load from JSON
+ 
+// this is the format of the JSON 
+            // rows : [
+            //     {
+            //         cols : [
+            //             {size : 6},
+            //             {size : 6}
+            //         ],
+            //     },
+            //     {
+            //         cols : [
+            //             {size : 2},
+            //             {size : 4},
+            //             {size : 6}
+            //         ]
+            //     },
+
+            // ]
 
 });

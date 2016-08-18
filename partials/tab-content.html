@@ -29,7 +29,9 @@
       <uib-tab index="$index + 1" ng-repeat="tab in tabs"  heading ="{{tab.name}}"  ng-click="clickTab(tab)">     
           
         <div class="tabHeader">          
-          <h2>{{tab.name}}   <i class="fa fa-edit" uib-tooltip="Edit Tab"></i></h2>
+          <h2>{{tab.name}}   
+            <i  ng-if="settings.editMode == true" class="fa fa-edit" uib-tooltip="Edit Tab"></i>
+          </h2>
         </div>
         <hr>   
                        
@@ -41,17 +43,14 @@
                 </div>
            </div>
            <!--At the end add a button for adding a new row-->
-           <div class="col-xs-12">
+           <div class="col-xs-12"  ng-if="settings.editMode == true">
 
             <!--TAB CONTENT-->
             <div class="tabContent">
-
-
- 
             </div>
 
               <!--Add Row Button-->
-              <div class="text-center">               
+              <div class="text-center">         
                 <input ng-model="defaultLayout">
                 <button type="button" class="btn btn-default btn-sm" ng-click="addRow(tab, defaultLayout)"> <i class="fa fa-plus"></i> Add Row</button>          
                 <i class="fa fa-question-circle"  uib-tooltip="Use Bootstrap layout separated by spaces. Examples: 6 6 | 2 2 4 6 | 4 4 4"></i>
@@ -60,7 +59,7 @@
       </uib-tab>
       
       <!--Add Tab Button-->
-      <button type="button" class="btn btn-default btn-sm" ng-click="addTab()">  <i class="fa fa-plus"></i> </button>
+      <button type="button" ng-if="settings.editMode == true" class="btn btn-default btn-sm" ng-click="addTab()">  <i class="fa fa-plus"></i> </button>
     </uib-tabset>
 
 </div>
